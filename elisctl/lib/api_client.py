@@ -462,6 +462,7 @@ class ELISClient(APIClient):
 
         data = {
             "name": name,
+            "type": 'webhook',
             "queues": queues,
             "active": active,
             "events": events,
