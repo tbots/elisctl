@@ -474,6 +474,28 @@ class ELISClient(APIClient):
         }
         return get_json(self.post("webhooks", data))
 
+    def create_serverless_function(
+            self,
+            name: str,
+            queues: List[str],
+            active: bool,
+            events: List[str],
+            config_runtime: str,
+            config_code: str,
+    ) -> dict:
+        data = {
+            "name": name,
+            "type": 'function',
+            "queues": queues,
+            "active": active,
+            "events": events,
+            "config": {
+                "runtime": config_runtime,
+                "code": config_code,
+            },
+        }
+        return get_json(self.post("hooks", data))
+
     def upload_document(
         self, id_: int, file: str, filename_overwrite: str = "", values: Dict[str, str] = None
     ) -> dict:
