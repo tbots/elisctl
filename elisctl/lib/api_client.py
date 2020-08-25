@@ -369,13 +369,14 @@ class ELISClient(APIClient):
         connector_url: Optional[str] = None,
         webhooks_urls: Optional[List] = None,
         locale: Optional[str] = None,
+        rir_url: str = "https://all.rir.rossum.ai",
     ) -> dict:
         data = {
             "name": name,
             "workspace": workspace_url,
             "schema": schema_url,
             # XXX: The API should provide reasonable defaults:
-            "rir_url": "https://all.rir.rossum.ai",
+            "rir_url": rir_url,
         }
         if connector_url is not None:
             data[CONNECTORS.singular] = connector_url
